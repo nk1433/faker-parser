@@ -1,8 +1,15 @@
 const fakerParser = require("./index");
 
+const custom = {
+    firstName: () => "nithesh",
+    helpers: {
+        positive: () => 1,
+        negative: () => -1
+    }
+};
 
 let data = {
-    name: "name.findName",
+    name: "firstName",
     email: "internet.email",
     details: {
         card: "helpers.createCard",
@@ -13,11 +20,11 @@ let data = {
             },
         },
     },
-    age: "random.number",
+    age: "helpers.positive",
     gender: () => "male",
 };
 
 
+const parse = fakerParser(custom);
 
-
-console.log(fakerParser(data))
+console.log(parse(data))
