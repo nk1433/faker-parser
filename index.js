@@ -1,25 +1,28 @@
 const faker = require("faker");
 
 const actions = {
-    string: (data,key) => {
+    string: (data,key,output) => {
         let fakerFunction = faker;
         data[key].split(".").forEach((item) => {
             fakerFunction = fakerFunction[item]
         })
-        data[key] = fakerFunction();
+        output[key] = fakerFunction();
     },
 
-    object: (data,key) => 
-        fakerParser(data[key]),
+    object: (data,key,output) => 
+       output[key] = fakerParser(data[key]),
 
-    function: (data,item) => 
-        data[item] = data[item]()
+    function: (data,item,output) => 
+        output[item] = data[item]()
 
 }
 
 const keywords = Object.keys(actions)
 
-const fakerParser = (data) => 
-    Object.keys(data).forEach((item) => actions[typeof(data[item])](data,item))
+const fakerParser = (data) => {
+    const output = {};
+    Object.keys(data).forEach((item) => actions[typeof(data[item])](data,item,output));
+    return output;
+}
 
-module.exports = fakerParser
+module.exports = fakerParser;

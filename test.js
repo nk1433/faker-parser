@@ -18,6 +18,6 @@ let data = {
 };
 
 
-fakerParser(data)
 
-console.log(data)
+
+console.log(fakerParser(data))
