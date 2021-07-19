@@ -1,27 +1,24 @@
 const faker = require("faker");
 
-const findFunction = (attrs,obj) => {
+const findFunction = (path,obj) => {
     let fakerFunction = obj;
-    attrs.forEach((item) => {
-        fakerFunction = fakerFunction.hasOwnProperty(item) ? fakerFunction[item] : {}
+    path.split(".").forEach((part) => {
+        fakerFunction = fakerFunction.hasOwnProperty(part) ? fakerFunction[part] : {}
     })
-    return fakerFunction;
+    return typeof(fakerFunction) === "function" ? fakerFunction : undefined
 };
 
 const fakerParser = (custom) => {
     const actions = {
-        string: (data,key,output) => {
-            const custfunc = findFunction(data[key].split("."),custom);
-            const fakerfunc = findFunction(data[key].split("."),faker);
-            let func = typeof(custfunc) === "function" ? custfunc : fakerfunc
-            output[key] = func();
-        },
+        string: (data,key,output) => 
+            output[key] = (findFunction(data[key],custom) 
+                || findFunction(data[key],faker))(),
 
         object: (data,key,output) => 
             output[key] = parse(data[key]),
 
-        function: (data,item,output) => 
-            output[item] = data[item](),
+        function: (data,key,output) => 
+            output[key] = data[key](),
 
     };
     const parse = (data) => {
