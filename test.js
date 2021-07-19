@@ -8,7 +8,9 @@ const custom = {
     }
 };
 
-let data = {
+const parse = fakerParser(custom);
+
+console.log(parse({
     name: "firstName",
     email: "internet.email",
     details: {
@@ -22,9 +24,6 @@ let data = {
     },
     age: "helpers.positive",
     gender: () => "male",
-};
+}))
 
-
-const parse = fakerParser(custom);
-
-console.log(parse(data))
+console.log(parse("firstName"));

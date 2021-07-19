@@ -23,6 +23,7 @@ const fakerParser = (custom) => {
     };
     const parse = (data) => {
         const output = {};
+        console.log(Object.keys(data));
         Object.keys(data).forEach((item) => 
             output[item] = actions[typeof(data[item])](data,item));
         return output;
