@@ -10,20 +10,21 @@ const findFunction = (path,obj) => {
 
 const fakerParser = (custom) => {
     const actions = {
-        string: (data,key,output) => 
-            output[key] = (findFunction(data[key],custom) 
+        string: (data,key) => 
+            (findFunction(data[key],custom) 
                 || findFunction(data[key],faker))(),
 
-        object: (data,key,output) => 
-            output[key] = parse(data[key]),
+        object: (data,key) => 
+            parse(data[key]),
 
-        function: (data,key,output) => 
-            output[key] = data[key](),
+        function: (data,key) => 
+            data[key](),
 
     };
     const parse = (data) => {
         const output = {};
-        Object.keys(data).forEach((item) => actions[typeof(data[item])](data,item,output));
+        Object.keys(data).forEach((item) => 
+            output[item] = actions[typeof(data[item])](data,item));
         return output;
     };
     return parse;
