@@ -1,0 +1,13 @@
+lockfileVersion: 5.3
+
+specifiers:
+  faker: ^5.5.3
+
+dependencies:
+  faker: 5.5.3
+
+packages:
+
+  /faker/5.5.3:
+    resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
+    dev: false
