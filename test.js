@@ -27,3 +27,4 @@ console.log(parse({
 }))
 
 console.log(parse("firstName"));
+console.log(parse(custom.firstName));
