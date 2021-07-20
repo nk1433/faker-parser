@@ -22,6 +22,8 @@ const fakerParser = (custom) => {
         },
         
         function: (value) => value(),
+
+        number: (value) => value 
     };
     
     return (data) => actions[typeof(data)](data);
