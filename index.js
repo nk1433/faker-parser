@@ -8,16 +8,16 @@ const findFunction = (path,obj) => {
     return typeof(fakerFunction) === "function" ? fakerFunction : undefined
 };
 
-const fakerParser = (custom = {}) => {
+const fakerParser = (overides = {}) => {
     const actions = {
         string: (value) => 
-            (findFunction(value,custom) 
+            (findFunction(value,overides) 
                 || findFunction(value,faker))(),
 
-        object: (data) => {
+        object: (value) => {
             const output = {};
-            Object.keys(data).forEach((item) => 
-                output[item] = actions[typeof(data[item])](data[item]));
+            Object.keys(value).forEach((item) => 
+                output[item] = actions[typeof(value[item])](value[item]));
             return output;
         },
         
