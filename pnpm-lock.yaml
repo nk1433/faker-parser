@@ -1,13 +1,41 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@laufire/utils': ^2.7.0
   faker: ^5.5.3
 
 dependencies:
+  '@laufire/utils': 2.7.0
   faker: 5.5.3
 
 packages:
 
+  /@babel/runtime/7.14.6:
+    resolution: {integrity: sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: false
+
+  /@laufire/utils/2.7.0:
+    resolution: {integrity: sha512-QPyqsB9mVZT9UFfNX7gO+to71RIrchV6oJC7kpBYxlTC/Oe8ZsK/F/mXn6lMmGvw0cOBsY8a9CwyXCecqwLAWg==}
+    dependencies:
+      '@babel/runtime': 7.14.6
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
   /faker/5.5.3:
     resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
+    dev: false
+
+  /fsevents/2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    dev: false
+    optional: true
+
+  /regenerator-runtime/0.13.7:
+    resolution: {integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==}
     dev: false
