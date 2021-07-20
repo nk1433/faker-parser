@@ -8,7 +8,7 @@ const findFunction = (path,obj) => {
     return typeof(fakerFunction) === "function" ? fakerFunction : undefined
 };
 
-const fakerParser = (custom) => {
+const fakerParser = (custom = {}) => {
     const actions = {
         string: (value) => 
             (findFunction(value,custom) 
