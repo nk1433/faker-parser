@@ -1,7 +1,4 @@
 const fakerParser = require("./index");
-const faker = require("faker");
-const {inferType} = require("@laufire/utils/reflection");
-const {result} = require("@laufire/utils/collection");
 
 const custom = {
     firstName: () => "nithesh",
@@ -35,8 +32,6 @@ console.log(parse({
 
 console.log(parse("firstName"));
 console.log(parse(custom.firstName));
-console.log(inferType([]));
-console.log(result(faker,"internet/email")());
 
 console.log(parse(
     [

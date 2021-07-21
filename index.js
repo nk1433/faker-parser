@@ -2,14 +2,6 @@ const faker = require("faker");
 const {inferType} = require("@laufire/utils/reflection");
 const {range,result} = require("@laufire/utils/collection");
 
-// const findFunction = (path,obj) => {
-//     let fakerFunction = obj;
-//     path.split(".").forEach((part) => {
-//         fakerFunction = fakerFunction.hasOwnProperty(part) ? fakerFunction[part] : {}
-//     })
-//     return typeof(fakerFunction) === "function" ? fakerFunction : undefined
-// };
-
 const parser = (overides = {}) => {
     const actions = {
         string: (value) => 
@@ -34,6 +26,6 @@ const parser = (overides = {}) => {
     const parse = (data) => actions[inferType(data)](data);
 
     return parse;
-}
+};
 
 module.exports = parser;
