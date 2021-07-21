@@ -4,6 +4,8 @@ const {range,result} = require("@laufire/utils/collection");
 const {value} = require("@laufire/utils/fn");
 
 const parser = (overides = {}) => {
+    const defaultAction = (value) => value;
+
     const actions = {
         string: (value) => 
             (result(overides,value) 
@@ -25,11 +27,9 @@ const parser = (overides = {}) => {
             }
             return arr;
         },
-
-        number: (value) => value,
     };
 
-    const parse = (data) => actions[inferType(data)](data);
+    const parse = (data) => (actions[inferType(data)] || defaultAction)(data);
 
     return parse;
 };
