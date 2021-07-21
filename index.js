@@ -1,32 +1,39 @@
 const faker = require("faker");
+const {inferType} = require("@laufire/utils/reflection");
+const {range,result} = require("@laufire/utils/collection");
 
-const findFunction = (path,obj) => {
-    let fakerFunction = obj;
-    path.split(".").forEach((part) => {
-        fakerFunction = fakerFunction.hasOwnProperty(part) ? fakerFunction[part] : {}
-    })
-    return typeof(fakerFunction) === "function" ? fakerFunction : undefined
-};
+// const findFunction = (path,obj) => {
+//     let fakerFunction = obj;
+//     path.split(".").forEach((part) => {
+//         fakerFunction = fakerFunction.hasOwnProperty(part) ? fakerFunction[part] : {}
+//     })
+//     return typeof(fakerFunction) === "function" ? fakerFunction : undefined
+// };
 
-const fakerParser = (overides = {}) => {
+const parser = (overides = {}) => {
     const actions = {
         string: (value) => 
-            (findFunction(value,overides) 
-                || findFunction(value,faker))(),
+            (result(overides,value) 
+                || result(faker,value))(),
 
         object: (value) => {
             const output = {};
             Object.keys(value).forEach((item) => 
-                output[item] = actions[typeof(value[item])](value[item]));
+                output[item] = parse(value[item]));
             return output;
         },
         
         function: (value) => value(),
 
-        number: (value) => value 
+        array: ([count,template]) => 
+            range(1,count).map(() => parse(template)),
+
+        number: (value) => value,
     };
-    
-    return (data) => actions[typeof(data)](data);
+
+    const parse = (data) => actions[inferType(data)](data);
+
+    return parse;
 }
 
-module.exports = fakerParser;
+module.exports = parser;
