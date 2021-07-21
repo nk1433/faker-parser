@@ -32,7 +32,7 @@ console.log(parse({
     ],
 }));
 
-console.log(parse("firstName"));
+console.log(parse("nithesh"));
 console.log(parse(custom.firstName));
 
 console.log(parse(
@@ -61,7 +61,16 @@ console.log(parse({
     ]
 }));
 
+const template = () => ({
+    name: "name/firstName",
+    cost: () => rndBetween(0,10),
+    tasks: [
+        () => rndBetween(0,2),
+        template
+    ]
+});
 
+console.log(parse(template));
 
 
 

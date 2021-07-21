@@ -9,7 +9,8 @@ const parser = (overides = {}) => {
     const actions = {
         string: (value) => 
             (result(overides,value) 
-                || result(faker,value))(),
+                || result(faker,value)
+                || (() => defaultAction(value)))(),
 
         object: (value) => {
             const output = {};
@@ -18,7 +19,7 @@ const parser = (overides = {}) => {
             return output;
         },
         
-        function: (value) => value(),
+        function: (value) => parse(value()),
 
         array: ([count,template]) => {
             let arr = [];
