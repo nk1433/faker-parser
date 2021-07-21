@@ -35,7 +35,7 @@ console.log(parse(custom.firstName));
 
 console.log(parse(
     [
-        3,
+        () => 5,
         {
             name: "name/firstName"
         }

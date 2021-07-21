@@ -1,6 +1,7 @@
 const faker = require("faker");
 const {inferType} = require("@laufire/utils/reflection");
 const {range,result} = require("@laufire/utils/collection");
+const {value} = require("@laufire/utils/fn");
 
 const parser = (overides = {}) => {
     const actions = {
@@ -18,7 +19,7 @@ const parser = (overides = {}) => {
         function: (value) => value(),
 
         array: ([count,template]) => 
-            range(1,count).map(() => parse(template)),
+            range(1,value(count)).map(() => parse(template)),
 
         number: (value) => value,
     };
