@@ -18,8 +18,13 @@ const parser = (overides = {}) => {
         
         function: (value) => value(),
 
-        array: ([count,template]) => 
-            range(1,value(count)).map(() => parse(template)),
+        array: ([count,template]) => {
+            let arr = [];
+            for (let i = 0; i < value(count); i++) {
+               arr.push(parse(template));
+            }
+            return arr;
+        },
 
         number: (value) => value,
     };
