@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@laufire/utils': ^2.8.1
+  '@laufire/utils': ^2.9.0
   faker: ^5.5.3
 
 dependencies:
-  '@laufire/utils': 2.8.1
+  '@laufire/utils': 2.9.0
   faker: 5.5.3
 
 packages:
@@ -17,8 +17,8 @@ packages:
       regenerator-runtime: 0.13.7
     dev: false
 
-  /@laufire/utils/2.8.1:
-    resolution: {integrity: sha512-RCPrxPrh2l74PtbTplj817nx5baP6u+vwf6I3CB/pzf/tABNzCrU21D89JlAKsrKNml/umzM5/CMrddTWtiQww==}
+  /@laufire/utils/2.9.0:
+    resolution: {integrity: sha512-0WWfCz/LgcHIIbY6sSnNEPl9noBIhbS8RrpgDxd/0DllNN+jg6AzxD94JbDVQxLDf43ColINtJQMAOBlb1tSEg==}
     dependencies:
       '@babel/runtime': 7.14.6
     optionalDependencies:

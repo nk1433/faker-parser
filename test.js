@@ -7,7 +7,7 @@ const custom = {
     helpers: {
         positive: () => 1,
         negative: () => -1
-    }
+    },
 };
 
 const parse = fakerParser(custom);
@@ -32,12 +32,11 @@ console.log(parse({
     ],
 }));
 
-console.log(parse("nithesh"));
 console.log(parse(custom.firstName));
 
 console.log(parse(
     [
-        () => 5,
+        () => 0,
         {
             name: "name/firstName"
         }
@@ -61,16 +60,6 @@ console.log(parse({
     ]
 }));
 
-const template = () => ({
-    name: "name/firstName",
-    cost: () => rndBetween(0,10),
-    tasks: [
-        () => rndBetween(0,2),
-        template
-    ]
-});
-
-console.log(parse(template));
 
 
 
